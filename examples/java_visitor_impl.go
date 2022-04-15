@@ -3,7 +3,7 @@ package examples
 // 自定义的包3
 import (
 	"fmt"
-	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"github.com/minnanalee/antlrjava/antlr"
 	"github.com/minnanalee/antlrjava/parser"
 	"reflect"
 )

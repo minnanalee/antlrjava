@@ -2,7 +2,7 @@
 
 package parser // JavaParser
 
-import "github.com/antlr/antlr4/runtime/Go/antlr"
+import "github.com/minnanalee/antlrjava/antlr"
 
 type BaseJavaParserVisitor struct {
 	*antlr.BaseParseTreeVisitor

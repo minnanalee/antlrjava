@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"github.com/minnanalee/antlrjava/antlr"
 )
 
 // Suppress unused import errors

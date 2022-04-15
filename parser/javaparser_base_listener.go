@@ -2,7 +2,7 @@
 
 package parser // JavaParser
 
-import "github.com/antlr/antlr4/runtime/Go/antlr"
+import "github.com/minnanalee/antlrjava/antlr"
 
 // BaseJavaParserListener is a complete listener for a parse tree produced by JavaParser.
 type BaseJavaParserListener struct{}
