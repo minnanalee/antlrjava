@@ -1,7 +1,6 @@
 package examples
 
-// Code generated from ./JavaParser.g4 by ANTLR 4.10. DO NOT EDIT.
-
+// 自定义的包
 import (
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/minnanalee/antlrjava/parser"
