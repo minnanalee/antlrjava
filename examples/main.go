@@ -1,4 +1,5 @@
-package main
+//改到根目录运行
+package examples
 
 import (
 	"fmt"
