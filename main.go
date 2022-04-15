@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/antlr/antlr4/runtime/Go/antlr"
+	"github.com/minnanalee/antlrjava/antlr"
 	"github.com/minnanalee/antlrjava/examples"
 	"github.com/minnanalee/antlrjava/parser"
 	"log"
