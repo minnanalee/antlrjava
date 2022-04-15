@@ -2,9 +2,68 @@ package examples
 
 // 自定义的包3
 import (
+	"fmt"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/minnanalee/antlrjava/parser"
+	"reflect"
 )
+
+type SourceInfo struct {
+	Start, End, Line, Column int
+	Source                   string
+}
+
+// 解析的源代码的起止位置，行、列号，内容
+func getSourceInfo(ctx antlr.BaseParserRuleContext) *SourceInfo {
+	start, end := ctx.GetStart().GetStart(), ctx.GetStop().GetStop()
+	return &SourceInfo{Line: ctx.GetStart().GetLine(), Start: start, End: end,
+		Column: ctx.GetStart().GetColumn(),
+		Source: ctx.GetStart().GetInputStream().GetTextFromInterval(&antlr.Interval{
+			Start: start, Stop: end})}
+
+}
+
+type Visitor struct {
+	antlr.BaseParseTreeVisitor
+}
+
+func NewVisitor() *Visitor {
+
+	return &Visitor{
+		BaseParseTreeVisitor: antlr.BaseParseTreeVisitor{},
+	}
+}
+
+func (c *Visitor) Visit(tree antlr.ParseTree) interface{} {
+	fmt.Println("Visit->Tree type: ", reflect.TypeOf(tree))
+
+	switch val := tree.(type) {
+	default:
+		return val.Accept(c)
+		/*	case *CalculateContext:
+				return val.Accept(c)
+			case *ToSetVarContext:
+				return val.Accept(c)
+		*/
+	}
+	return nil
+}
+
+func (v *Visitor) VisitChildren(node antlr.RuleNode) interface{} {
+	for _, ch := range node.GetChildren() {
+		switch rr := ch.(type) {
+		case *antlr.TerminalNodeImpl:
+			fmt.Println("Terminal Node Value: \t" + rr.GetText())
+			/*		default:
+					fmt.Println("Middle Node Value: \t"+ch.(antlr.ParseTree).ToStringTree(nil,antlr.Parser)
+			*/
+		}
+		ch.(antlr.ParseTree).Accept(v)
+	}
+	return nil
+}
+
+//===
 
 type BaseJavaParserVisitor struct {
 	*antlr.BaseParseTreeVisitor
