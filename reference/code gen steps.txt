@@ -1,8 +1,8 @@
 install jdk
 download antlr-4.10-complete.jar
 
-java -jar antlr-4.10-complete.jar -visitor -Dlanguage=Go ./Java8Lexer.g4 -o base
-java -jar antlr-4.10-complete.jar -visitor -Dlanguage=Go ./Java8Parser.g4 -o base
+java -jar antlr-4.10-complete.jar -visitor -Dlanguage=Go ./Java8Lexer.g4 -o parser
+java -jar antlr-4.10-complete.jar -visitor -Dlanguage=Go ./Java8Parser.g4 -o parser
 
 push to github
 release version
